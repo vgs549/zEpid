@@ -488,8 +488,11 @@ class MonteCarloGFormula:
         except TypeError:  # gets around pandas <0.22 error
             gs = pd.concat(mc_simulated_data, ignore_index=True)
 
+        #self.predicted_outcomes = gs[
+            #['uid_g_zepid', self.exposure, self.outcome, self.time_in, self.time_out] + self._covariate].sort_values(
+            #by=['uid_g_zepid', self.time_in]).reset_index(drop=True)
         self.predicted_outcomes = gs[
-            ['uid_g_zepid', self.exposure, self.outcome, self.time_in, self.time_out] + self._covariate].sort_values(
+            ['uid_g_zepid', self.idvar, self.exposure, self.outcome, self.time_in, self.time_out] + self._covariate].sort_values(
             by=['uid_g_zepid', self.time_in]).reset_index(drop=True)
 
     @staticmethod
